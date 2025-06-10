@@ -9,11 +9,16 @@ class Barco{
     }
   }
 
+
+  method piratasInaptos(unaMision) = tripulacion.filter({p => !p.esApto(unaMision)})
   method cambiarMision(unaMision) {
     mision = unaMision
-    tripulacion.removeAll({p => !p.esApto(unaMision)})
+    tripulacion.removeAll(self.piratasInaptos(unaMision))
   }
-  
+
+
+   
+
   method echarPirata(unPirata) {
     tripulacion.remove(unPirata)
   }
