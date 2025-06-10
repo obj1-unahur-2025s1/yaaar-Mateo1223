@@ -4,7 +4,7 @@ class Barco{
   const property tripulacion = #{}
   
   method anadirPirata(unPirata) {
-    if (unPirata.esApto(mision)){
+    if (unPirata.esApto(mision) && tripulacion.size() < capacidad){
       tripulacion.add(unPirata)
     }
   }
