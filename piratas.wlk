@@ -25,7 +25,7 @@ class Barco{
   }
 
   method anclar(unaCiudad) {
-    tripulacion.forEach({p => p.tomarUnTrago() p.restarMonedas(1)})
+    tripulacion.forEach({p => p.tomarUnTrago()})
     self.echarPirata(tripulacion.max({p => p.nivelDeEbriedad()}))
     unaCiudad.poblacion(unaCiudad.poblacion() + 1)
   }
@@ -64,10 +64,7 @@ class Pirata{
 
   method tomarUnTrago() {
     nivelDeEbriedad = (nivelDeEbriedad + 5).min(100)
-  }
-
-  method restarMonedas(cantidad) {
-    monedas = (monedas - cantidad).max(0)
+    monedas = (monedas - 1).max(0)
   }
 }
 
