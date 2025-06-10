@@ -1,12 +1,17 @@
 class Barco{
   var property mision
   const property capacidad
-  const property tripulacion = #{}
+  var property tripulacion = #{}
   
   method anadirPirata(unPirata) {
     if (unPirata.esApto(mision) && tripulacion.size() < capacidad){
       tripulacion.add(unPirata)
     }
+  }
+
+  method cambiarMision(unaMision) {
+    mision = unaMision
+    tripulacion = tripulacion.filter({p => p.esApto(unaMision)})
   }
 
   method echarPirata(unPirata) {
@@ -27,7 +32,7 @@ class Barco{
     }
   }
 
-
+  
   method tripulanteQueMasGenteInvito() = tripulacion.max({p => p.tripulantesInvitados()})
   method ocupacion() = (tripulacion.size() * 100) / capacidad
   method esVulnerableABarco(unBarco) = self.tripulacion().size() >= unBarco.tripulacion().size() * 0.5 and unBarco.tripulacion().all({p => p.pasadoDeGrog()})
