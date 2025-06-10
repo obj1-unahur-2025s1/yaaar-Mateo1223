@@ -1,7 +1,7 @@
 class Barco{
   var property mision
   const property capacidad
-  var property tripulacion = #{}
+  const property tripulacion = #{}
   
   method anadirPirata(unPirata) {
     if (unPirata.esApto(mision) && tripulacion.size() < capacidad){
@@ -11,9 +11,9 @@ class Barco{
 
   method cambiarMision(unaMision) {
     mision = unaMision
-    tripulacion = tripulacion.filter({p => p.esApto(unaMision)})
+    tripulacion.removeAll({p => !p.esApto(unaMision)})
   }
-
+  
   method echarPirata(unPirata) {
     tripulacion.remove(unPirata)
   }
