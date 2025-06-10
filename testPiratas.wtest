@@ -1,0 +1,11 @@
+import piratas.*
+
+describe "test piratas" {
+  test "aaa" {
+    var unPirata = new Pirata(items = ["test"])
+
+
+    unPirata.monedas(2)
+    assert.equals(unPirata.monedas(), 2)
+  }
+}
